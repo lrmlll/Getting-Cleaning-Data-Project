@@ -1,0 +1,81 @@
+
+#Project Description  
+This project means to collect and clean the sumsung smartphone sensor data.  
+
+#Study design and data processing  
+The raw data was collected from:  
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip   
+file was downloaded through with command  
+download.file(url= "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",destfile = "datafile.zip")  
+
+downloaded data came in with zip format, and it contains a set of test data and a set of train data  
+data files used in the project include:  
+- 'features.txt': List of all features.  
+- 'activity_labels.txt': Links the class labels with their activity name.  
+- 'train/X_train.txt': Training set.  
+- 'train/y_train.txt': Training labels.  
+- 'test/X_test.txt': Test set.  
+- 'test/y_test.txt': Test labels.  
+- 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.   
+
+##Creating the tidy datafile  
+#Guide to create the tidy data file  
+1. The feature names are assigned to the dataset as column names  
+    candidate (subject_test) and activity (labels) are created as new columns  
+   Then, test and train sets were merged  
+2. Variable names containing "mean","std" are extracted, new dataset is created accordingly   
+  activity values from 1-6 were replaced with actual description in activity_labels.txt  
+#Cleaning of the data  
+  variables candidate and activity are set as id with rest columns as measures  
+  records for each activity for each candidate are listed as an unit   
+  
+##Description of variables  
+str(tidydata)  
+data.frame:	180 obs. of  81 variables
+
+###code book
+activity:   character, type of activity that is been measured  
+candidate:  int, id for candidates who are taking the test  
+tBodyAcc-mean()-X,Y,Z:  numeric, mean value of X,Y,Z axis   
+tBodyAcc-std()-X,Y,Z:   numeric, standard deviation of the feature for X,Y,Z axis  
+tGravityAcc-mean()-X,Y,Z:  numeric, mean value of X,Y,Z axis   
+tGravityAcc-std()-X,Y,Z:  numeric,  standard deviation of the feature for X,Y,Z axis  
+tBodyAccJerk-mean()-X,Y,Z:  numeric,  mean value of X,Y,Z axis   
+tBodyAccJerk-std()-X,Y,Z:  numeric, standard deviation of the feature for X,Y,Z axis  
+tBodyGyro-mean()-X,Y,Z:  numeric,  mean value of X,Y,Z axis   
+tBodyGyro-std()-X,Y,Z:  numeric, standard deviation of the feature for X,Y,Z axis  
+tBodyGyroJerk-mean()-X,Y,Z  numeric,  mean value of X,Y,Z axis   
+tBodyGyroJerk-std()-X,Y,Z:  numeric, standard deviation of the feature for X,Y,Z axis  
+tBodyAccMag-mean():  numeric, mean of the measurement  
+tBodyAccMag-std()  numeric,  standard deviation of the measurement  
+tGravityAccMag-mean():  numeric, mean of the measurement  
+GravityAccMag-std():  numeric,  standard deviation of the measurement  
+tBodyAccJerkMag-mean():  numeric, mean of the measurement  
+tBodyAccJerkMag-std():  numeric,  standard deviation of the measurement  
+tBodyGyroMag-mean():  numeric, mean of the measurement  
+tBodyGyroMag-std():   numeric,  standard deviation of the measurement  
+tBodyGyroJerkMag-mean():  numeric, mean of the measurement  
+tBodyGyroJerkMag-std():  numeric,  standard deviation of the measurement  
+fBodyAcc-mean()-X,Y,Z:  numeric,  mean value of X,Y,Z axis   
+fBodyAcc-std()-X,Y,Z;  numeric, standard deviation of the feature for X,Y,Z axis  
+fBodyAcc-meanFreq()-X,Y,Z:  numeric,  mean value of X,Y,Z axis   
+fBodyAccJerk-mean()-X,Y,Z:  numeric,  mean value of X,Y,Z axis   
+fBodyAccJerk-std()-X,Y,Z:  numeric, standard deviation of the feature for X,Y,Z axis  
+fBodyAccJerk-meanFreq()-X,Y,Z:   numeric,  mean value of X,Y,Z axis   
+fBodyGyro-mean()-X,Y,Z:  numeric,  mean value of X,Y,Z axis   
+fBodyGyro-std()-X,Y,Z:  numeric,  mean value of X,Y,Z axis   
+fBodyGyro-meanFreq()-X,Y,Z:   numeric,  mean value of X,Y,Z axis   
+fBodyAccMag-mean():  numeric, mean of the measurement  
+fBodyAccMag-std():  numeric,  standard deviation of the measurement  
+fBodyAccMag-meanFreq():  numeric, mean of the measurement    
+fBodyBodyAccJerkMag-mean():  numeric, mean of the measurement  
+fBodyBodyAccJerkMag-std():  numeric,  standard deviation of the measurement  
+fBodyBodyAccJerkMag-meanFreq():  numeric, mean of the measurement  
+fBodyBodyGyroMag-mean():  numeric, mean of the measurement  
+fBodyBodyGyroMag-std():  numeric,  standard deviation of the measurement  
+fBodyBodyGyroMag-meanFreq():  numeric, mean of the measurement  
+fBodyBodyGyroJerkMag-mean():   numeric, mean of the measurement  
+fBodyBodyGyroJerkMag-std():  numeric,  standard deviation of the measurement  
+fBodyBodyGyroJerkMag-meanFreq():  numeric, mean of the measurement  
+
+

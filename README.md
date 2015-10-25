@@ -33,10 +33,10 @@ colnames(y_train)<- c("activity")
 temptest<- cbind(x_test,y_test,subject_test)  
 temptrain<- cbind(x_train,y_train,subject_train)  
 
-##merge test and train dataset
+## Merge test and train dataset   
 all<- rbind(temptest,temptrain)
 
-##extract measurements on mean and standard deviation 
+## Extract measurements on mean and standard deviation 
 
 ###get index and subset
 meaninex<- grep("mean",features[,2])  
@@ -45,7 +45,7 @@ index<- sort(c(meaninex,stdindex))
 
 cleanedall<- all[,c(index,562,563)]
 
-##label dataset with activity name
+## Label dataset with activity name   
 cleanedall$activity[cleanedall$activity == 1] <- "WALKING"  
 cleanedall$activity[cleanedall$activity == 2] <- "WALKING_UPSTAIRS" 
 cleanedall$activity[cleanedall$activity == 3] <- "WALKING_DOWNSTAIRS" 
@@ -54,7 +54,7 @@ cleanedall$activity[cleanedall$activity == 5] <- "STANDING"
 cleanedall$activity[cleanedall$activity == 6] <- "LAYING" 
 
 
-##Create tidy dataset
+## Create tidy dataset
 
 ###prepare the dataframe
 df1<- arrange(cleanedall, subjectnum) 
@@ -67,5 +67,5 @@ df1melt<- melt(df1,id=c("subjectnum","activity"),measure.vars = names(df1)[1:79]
 ###create tidy data
 tidydata<- dcast(df1melt, activity + subjectnum ~ variable,mean)  
 
-###output to txt file
+## Output to txt file   
 write.table(tidydata,file = "tidy_data_sum.txt",row.name=FALSE)
